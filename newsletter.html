@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="newsletter.css">
+  <title>Newsletter</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo1">
+      <img src="./image/holy.jfif" alt="Church Logo" class="logo-img" />
+      <div class="logo">
+        Sts. Joachim and Anne Church
+        <small>ECR, Vettuvankeni, Chennai-115</small>
+      </div>
+    </div>
+    <div class="header-nav-wrapper">
+      <nav>
+        <ul>
+          <li><a href="Home_page.html#about">About Us</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
+          <li><a href="Home_page.html#gallery">Gallery</a></li>
+          <li><a href="Home_page.html#events">Events</a></li>
+          <li><a href="Home_page.html#contact">Contact Us</a></li>
+          <li><a href="Home_page.html#ministries">Parish</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-nav">
+    <a href="Home_page.html">Home</a>
+    <span>&rsaquo;</span>
+    <span class="current">Newsletter</span>
+  </div>
+  <!-- Newsletter Archive Section -->
+
+  <section id="newsletter-viewer">
+    <div class="newsletter-wrapper">
+
+      <div class="newsletter-header">
+        <span class="tag">📄 Parish Newsletter</span>
+        <h2>Current Month Newsletter</h2>
+        <p class="subtitle">
+          View the latest parish newsletter. Scroll to read or download the full version.
+        </p>
+
+        <a id="downloadNewsletter" class="download-btn" target="_blank">
+          ⬇ Download Newsletter
+        </a>
+      </div>
+
+      <!-- 📌 Scrollable Newsletter Display -->
+      <div class="newsletter-frame">
+        <iframe id="newsletterFrame" src="" frameborder="0" title="Newsletter Viewer"></iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Sts. Joachim and Anne Church. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#" title="Facebook">📘</a>
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="YouTube">▶️</a>
+    </div>
+  </footer>
+
+  <script>
+    // Load newsletter data from API
+    function loadNewsletter() {
+      fetch('admin/api/newsletterapi.php')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(newsletters => {
+          if (!newsletters || newsletters.length === 0) {
+            document.getElementById('newsletterFrame').style.display = 'none';
+            document.querySelector('.newsletter-header').innerHTML = `
+              <span class="tag">📄 Parish Newsletter</span>
+              <h2>No Newsletter Available</h2>
+              <p class="subtitle">
+                There are no newsletters available at this time. Please check back later.
+              </p>
+            `;
+            return;
+          }
+
+          // Get the latest newsletter (first one after sorting by date)
+          const latest = newsletters[0];
+          const frame = document.getElementById('newsletterFrame');
+          const downloadBtn = document.getElementById('downloadNewsletter');
+
+          // Set iframe source or download link
+          if (latest.file) {
+            frame.src = `./newsletters/${latest.file}`;
+            downloadBtn.href = `./newsletters/${latest.file}`;
+            downloadBtn.download = latest.title || 'newsletter';
+          } else if (latest.download_url) {
+            // If it's a URL, we can embed PDFs or show download link
+            if (latest.download_url.endsWith('.pdf')) {
+              frame.src = latest.download_url;
+            } else {
+              frame.style.display = 'none';
+            }
+            downloadBtn.href = latest.download_url;
+            downloadBtn.target = '_blank';
+          }
+
+          // Update title if available
+          if (latest.title) {
+            const titleElement = document.querySelector('.newsletter-header h2');
+            if (titleElement) {
+              titleElement.textContent = latest.title;
+            }
+          }
+          if (latest.date) {
+            const dateStr = new Date(latest.date).toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            });
+            const subtitle = document.querySelector('.subtitle');
+            if (subtitle) {
+              subtitle.innerHTML = `Published: ${dateStr}. View the latest parish newsletter. Scroll to read or download the full version.`;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching newsletter:', error);
+          document.getElementById('newsletterFrame').style.display = 'none';
+          document.querySelector('.newsletter-header').innerHTML = `
+            <span class="tag">📄 Parish Newsletter</span>
+            <h2>Error Loading Newsletter</h2>
+            <p class="subtitle" style="color: #d32f2f;">
+              Failed to load newsletter. Please try again later.
+            </p>
+          `;
+        });
+    }
+    window.addEventListener('DOMContentLoaded', loadNewsletter);
+  </script>
+
+</body>
+
+</html>

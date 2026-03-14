@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery | Sts. Joachim and Anne Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #0b3d91;
+      --text-color: #222;
+      --card-bg: #ffffff;
+      --button-bg: #0b3d91;
+      --button-text: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background: linear-gradient(to right, #f0f7ff, #fff);
+    }
+
+    /*  css code for header code nav */
+
+    header {
+      background: rgba(255, 255, 255, 0.9);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo1 {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .logo small {
+      font-size: 0.85rem;
+      color: #666;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    /*  css code for nav breadcrumb */
+
+    .breadcrumb-nav {
+      background: linear-gradient(to right, #f0f4ff, #fef6fb);
+      padding: 1rem 2rem;
+      margin: 0 5vw;
+      margin-top: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      animation: slideFade 0.4s ease-in-out;
+    }
+
+    .breadcrumb-nav a {
+      color: #0b3d91;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .breadcrumb-nav a:hover {
+      text-decoration: underline;
+      color: #2e1f91;
+    }
+
+    .breadcrumb-nav span {
+      color: #888;
+    }
+
+    .breadcrumb-nav .current {
+      font-weight: 600;
+      color: #444;
+    }
+
+    @keyframes slideFade {
+      from {
+        transform: translateY(-6px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* css for gallery section */
+
+    .gallery-section {
+      padding: 4rem 5vw;
+    }
+
+    .gallery-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 2rem 5vw;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .social-icons {
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      color: #fff;
+      margin: 0 0.5rem;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffd700;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo1">
+      <img src="./image/holy.jfif" alt="Church Logo" class="logo-img" />
+      <div class="logo">
+        Sts. Joachim and Anne Church
+        <small>ECR, Vettuvankeni, Chennai-115</small>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <nav>
+        <ul>
+          <li><a href="Home_page.html#about">About Us</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#ministries">Parish</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-nav">
+    <a href="Home_page.html">Home</a>
+    <span>&rsaquo;</span>
+    <span class="current">Gallery</span>
+  </div>
+
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <h2>Full Church Gallery</h2>
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Gallery images will be loaded dynamically -->
+      <div style="grid-column: 1/-1; text-align: center; color: #666; padding: 3rem;">
+        Loading gallery images...
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Sts. Joachim and Anne Church. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="#" title="Facebook">📘</a>
+      <a href="#" title="Instagram">📸</a>
+      <a href="#" title="YouTube">▶️</a>
+    </div>
+  </footer>
+
+  <script>
+    // Gallery API binding
+    function loadGallery() {
+      const galleryGrid = document.getElementById('gallery-grid');
+      if (!galleryGrid) return;
+
+      fetch('admin/api/galleryapi.php')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(images => {
+          galleryGrid.innerHTML = '';
+
+          if (!images || images.length === 0) {
+            galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #666; padding: 3rem;">No gallery images available.</div>';
+            return;
+          }
+
+          // Display all images from the gallery
+          images.forEach(image => {
+            const img = document.createElement('img');
+            img.src = `./image/${image.image}`;
+            img.alt = image.title || 'Church Gallery Image';
+            img.loading = 'lazy'; // Lazy load for better performance
+            img.onerror = function () {
+              // Hide broken images
+              this.style.display = 'none';
+            };
+            galleryGrid.appendChild(img);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching gallery:', error);
+          galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #d32f2f; padding: 3rem;">Failed to load gallery images. Please try again later.</div>';
+        });
+    }
+
+    // Load gallery when page loads
+    window.addEventListener('DOMContentLoaded', loadGallery);
+  </script>
+
+</body>
+
+</html>

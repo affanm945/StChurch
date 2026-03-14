@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sts. Joachim and Anne Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #14297a;
+      --text-color: #222;
+      --bg-gradient: linear-gradient(to right, #c98aa3, #7fb8d1);
+
+      --card-bg: #ffffff;
+      --button-bg: #0b3d91;
+      --button-text: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --primary-color: #ffffff;
+      --text-color: #fff;
+      --bg-gradient: linear-gradient(to right, #22223a, #16213e);
+      --card-bg: #2c2c54;
+      --button-bg: #ffd700;
+      --button-text: #000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background: linear-gradient(to right, rgba(237, 8, 157, 0.4), rgba(4, 83, 255, 0.4));
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.8);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .logo1 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-color);
+    }
+
+    .logo small {
+      display: block;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: var(--text-color);
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .toggle-btn {
+      margin-left: 1rem;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    /* ==== HERO MODERN LOOK ==== */
+
+    #hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 6vw;
+      color: #fff;
+      background:
+        linear-gradient(rgba(5, 10, 40, .7), rgba(5, 10, 40, .7)),
+        url('./image/church-interior-solution-1000x1000.jpg') center/cover fixed;
+      animation: heroFade 1.2s ease-out;
+    }
+
+    @keyframes heroFade {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: .5px;
+      margin-bottom: .7rem;
+      text-shadow: 0 10px 25px rgba(0, 0, 0, .4);
+    }
+
+    #hero p {
+      font-size: 1.2rem;
+      opacity: .9;
+    }
+
+    /* Floating subtitle shimmer */
+    #hero p::after {
+      content: "";
+      display: block;
+      width: 110px;
+      height: 3px;
+      background: linear-gradient(90deg, #ffd86b, #9ec5ff);
+      margin: 12px auto 0;
+      border-radius: 50px;
+    }
+
+
+    .fade-text {
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+
+    .btn {
+      background: var(--button-bg);
+      color: var(--button-text);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 4rem 5vw;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+    }
+
+    .content-center {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      flex: 1 1 300px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .event-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    /* .event-card {
+  background: var(--card-bg);                                  event box height (small)
+  padding: 1.5rem;
+  border-left: 6px solid var(--primary-color);
+  border-radius: 8px;
+  width: 280px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+} */
+
+    .event-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-left: 6px solid var(--primary-color);
+      border-radius: 8px;
+      width: 280px;
+      min-height: 380px;
+      /* ✅ Increased height */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+
+    .event-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+
+    .event-p {
+      color: var(--text-color);
+      line-height: 1.4;
+    }
+
+    .event-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .event-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+    }
+
+
+    .event-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 3s ease-out, transform 3s ease-out;
+    }
+
+    .event-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .event-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 3rem;
+      /* managing the height between image and text in event box*/
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover .event-img {
+      transform: scale(1.03);
+    }
+
+    .event-btn {
+      margin-top: auto;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .event-btn:hover {
+      background: #092c6d;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      background-color: rgba(0, 0, 0, 0.3);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.8);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 500px;
+      color: #000;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+
+    /* parish priest css */
+
+    #parish-priest {
+      padding: 4rem 5vw;
+      background: linear-gradient(to right, rgba(237, 8, 157, 0.4), rgba(4, 83, 255, 0.4));
+    }
+
+    .priest-container {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .priest-image {
+      position: relative;
+    }
+
+    .priest-image img {
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+    }
+
+    .service-year {
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0b3d91;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .priest-details h2 {
+      color: #0b3d91;
+      margin-bottom: .6rem;
+    }
+
+    .priest-details h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: .6rem;
+    }
+
+    .priest-details p {
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .priest-meta {
+      background: #f2f5ff;
+      border-left: 6px solid #0b3d91;
+      padding: .9rem 1rem;
+      border-radius: 10px;
+      font-size: .95rem;
+    }
+
+    /* Responsive */
+    @media(max-width: 820px) {
+      .priest-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .priest-meta {
+        text-align: left;
+      }
+    }
+
+    /* parish priest css ends */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+      align-items: stretch;
+      margin-top: 2rem;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 100;
+      transform: translateY(30px);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-img-text {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .ministry-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #0b3d91;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    .card-text h3 {
+      font-size: 1.2rem;
+      color: #0b3d91;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-text p {
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    #church-stats {
+      padding: 5rem 5vw;
+      background: linear-gradient(rgba(11, 61, 145, 0.7), rgba(11, 61, 145, 0.7)),
+        url('./image/holy.jfif') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+
+
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+      flex: 1 1 200px;
+    }
+
+    .stat-card h3 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* ########################################### MASS TIMING */
+
+    #mass-timings {
+      padding: 9rem 5vw 8rem;
+      /* top, side, bottom */
+      background: linear-gradient(to right, rgba(237, 8, 157, 0.4), rgba(4, 83, 255, 0.4));
+      text-align: center;
+      /* light blue */
+      position: relative;
+      /* NOT absolute or fixed */
+      z-index: 1;
+    }
+
+    .mass-table-wrapper {
+      max-width: 900px;
+      margin: 3rem auto 5rem;
+      /* Add bottom margin */
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      overflow-x: auto;
+    }
+
+    .mass-heading {
+      padding-top: 5rem;
+      color: #14297a;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .days-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .day-tab {
+      padding: 0.6rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #f0f0f0;
+      color: #222;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .day-tab.active {
+      background-color: #4b2cb4;
+      color: white;
+    }
+
+    .day-tab:hover {
+      background-color: #e0e0ff;
+    }
+
+    .mass-table {
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mass-table th,
+    .mass-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .mass-table th {
+      background-color: #f7f7f7;
+      color: #333;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .mass-table th:first-child,
+    .mass-table td:first-child {
+      width: 30%;
+      min-width: 120px;
+    }
+
+    .mass-table th:last-child,
+    .mass-table td:last-child {
+      width: 70%;
+    }
+
+    .mass-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mass-table tr {
+      opacity: 0;
+      transform: translateY(6px);
+      animation: rowFade .4s ease forwards;
+    }
+
+    @keyframes rowFade {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+
+    /* ##################################### contact section */
+    .contact-section {
+      background: #f9f9f9;
+      padding: 5rem 5vw;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      justify-content: center;
+      align-items: center;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .contact-image {
+      flex: 1;
+      position: relative;
+    }
+
+    .contact-image img {
+      width: 100%;
+      border-radius: 0 50% 50% 0;
+      max-width: 450px;
+      height: auto;
+      object-fit: cover;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-image .sub-img {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      bottom: -30px;
+      left: -30px;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .contact-info {
+      flex: 1;
+      max-width: 600px;
+    }
+
+    .contact-subtitle {
+      color: #f9b31d;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-title {
+      color: #2c1e91;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .contact-description {
+      color: #333;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .icon-circle {
+      background: #eef1ff;
+      color: #2c1e91;
+      font-size: 1.4rem;
+      border-radius: 50%;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-detail h4 {
+      margin: 0 0 0.3rem;
+      color: #222;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail p {
+      margin: 0;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* ################################# DARK MODE STYLES */
+
+    /* DARK MODE SUPPORT */
+    body[data-theme="dark"] .contact-section {
+      background: #181818;
+      color: #eee;
+    }
+
+    body[data-theme="dark"] .contact-title {
+      color: #261f86;
+    }
+
+    body[data-theme="dark"] .contact-subtitle {
+      color: #ffd700;
+    }
+
+    body[data-theme="dark"] .contact-description,
+    body[data-theme="dark"] .contact-detail p {
+      color: #241385;
+    }
+
+    body[data-theme="dark"] .contact-detail h4 {
+      color: #080808;
+    }
+
+    body[data-theme="dark"] .icon-circle {
+      background: #2c2c2c;
+      color: #ffd700;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+    }
+
+
+    /* HOVER ANIMATIONS */
+    .icon-circle {
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .icon-circle:hover {
+      transform: scale(1.1);
+      background: #2c1e91;
+      color: #fff;
+    }
+
+    /* #################################### MAP SECTION */
+    #map iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    /* ################################### footer section  */
+    /* ---------- FOOTER ---------- */
+
+    .modern-footer {
+      background: #032B5C;
+      color: #eaf1ff;
+      padding: 50px 0 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-container {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 40px;
+      padding: 0 40px;
+    }
+
+    /* Headings */
+    .footer-col h3,
+    .footer-col h4 {
+      margin-bottom: 15px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Paragraph */
+    .footer-col p {
+      color: #dbe6ff;
+      line-height: 1.6;
+    }
+
+    /* List */
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-col li {
+      margin-bottom: 12px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.95rem;
+    }
+
+    /* Email section wrapped */
+    .footer-email div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: #ffd24c;
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 10px;
+      transition: 0.3s ease;
+    }
+
+    .footer-col a:hover {
+      transform: translateX(5px);
+      color: #fff;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      gap: 18px;
+    }
+
+    .social-icons a {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #ffd24c;
+      color: #032B5C;
+      transform: translateY(-4px);
+    }
+
+    /* Bottom Bar */
+    .footer-bottom {
+      text-align: center;
+      padding-top: 25px;
+      margin-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.9rem;
+      color: #ccd8f7;
+    }
+
+    /* ############################################ GALLERY SECTION */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.03);
+    }
+
+    .slider-btn:hover {
+      background: #092c6d;
+    }
+
+    .slider-btn.left {
+      margin-right: 0.5rem;
+    }
+
+    .slider-btn.right {
+      margin-left: 0.5rem;
+    }
+
+    /*########################################### RESPONSIVE DESIGN */
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      #hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<script>
+  function openModal(id) {
+    document.getElementById(id).style.display = 'flex';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  function scrollSlider(direction) {
+    const container = document.getElementById("eventSlider");
+    const scrollAmount = container.querySelector('.event-block').offsetWidth + 24; // block width + gap
+
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: "smooth"
+    });
+  }
+
+  // Close modal on click outside
+  window.onclick = function (event) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  };
+</script>
+
+
+<body data-theme="light">
+
+  <header>
+    <div class="logo1">
+      <img src="./image/holy.jfif" alt="Church Logo" class="logo-img" />
+      <div class="logo">
+        Sts. Joachim and Anne Church
+        <small>ECR, Vettuvankeni, Chennai-115</small>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <nav>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="newsletter.html">Newsletter</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#ministries">Parish</a></li>
+        </ul>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+  </header>
+
+  <section id="hero">
+    <h1 id="hero-heading" class="fade-text">Welcome to Sts. Joachim and Anne Church</h1>
+    <p>ECR, Vettuvankeni, Chennai-115</p>
+    <!-- <a href="#about" class="btn">Learn More</a> -->
+  </section>
+
+
+  <!-- ######################################## PARISH PRIEST SECTION -->
+
+  <section id="parish-priest">
+    <div class="priest-container" id="priest-container">
+      <!-- Parish priest content will be loaded dynamically -->
+      <div style="text-align: center; color: #666; padding: 3rem;">
+        Loading parish priest information...
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ######################################## MASS TIMINGS SECTION -->
+
+  <div class="content-center">
+    <h2 class="mass-heading" style="text-align: center;">Mass Timings</h2>
+    <div class="days-tabs">
+      <button class="day-tab active" data-day="sunday">Sunday</button>
+      <button class="day-tab" data-day="monday">Monday</button>
+      <button class="day-tab" data-day="tuesday">Tuesday</button>
+      <button class="day-tab" data-day="wednesday">Wednesday</button>
+      <button class="day-tab" data-day="thursday">Thursday</button>
+      <button class="day-tab" data-day="friday">Friday</button>
+      <button class="day-tab" data-day="saturday">Saturday</button>
+      <button class="day-tab" data-day="special" style="display:none;">Special Mass</button>
+    </div>
+
+    <table class="mass-table">
+      <thead id="mass-table-head">
+        <tr>
+          <th>Time</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody id="mass-content">
+        <!-- Content will be inserted dynamically -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ##################################### ABOUT US SECTION -->
+  <section id="about">
+    <div class="content-center">
+      <h2>About Us</h2>
+      <!-- <div class= "about-image">
+      <img src="./image/gallery8.jpg" alt="about image">
+    </div> -->
+      <p style="text-align:center;">We are a faith-driven Catholic community dedicated to the teachings of Christ. Our
+        church is a welcoming space for prayer, reflection, and service.</p>
+  </section>
+
+  <!-- ##################################### GALLERY SECTION -->
+
+  <section id="gallery">
+    <div class="content-center">
+      <h2>Gallery</h2>
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Gallery images will be loaded dynamically -->
+        <div style="grid-column: 1/-1; text-align: center; color: #666; padding: 2rem;">
+          Loading gallery images...
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="gallery.html" class="btn">View More Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ##################################### EVENTS SECTION -->
+
+  <section id="events">
+    <div class="content-center">
+      <h2>Upcoming Events</h2>
+
+      <div class="event-cards" id="event-cards">
+        <!-- Events will be loaded dynamically -->
+        <div style="grid-column: 1/-1; text-align: center; color: #666; padding: 2rem;">
+          Loading upcoming events...
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="events.html" class="btn" style="text-decoration: none;">View More Events</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ##################################### MINISTRIES SECTION -->
+
+  <section id="ministries">
+    <div class="content-center">
+      <h2>Ministries</h2>
+      <div class="cards">
+
+        <a href="ministry-details.html?id=parish-council" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-parish.jpg" class="ministry-icon" alt="Parish Council">
+            <div class="card-text">
+              <h3>Parish Council</h3>
+              <p>Leadership body guiding parish administration, planning, and spiritual growth.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=anbiams" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-anbiams.jpg" class="ministry-icon" alt="Anbiams">
+            <div class="card-text">
+              <h3>Anbiams</h3>
+              <p>Small Christian community groups supporting neighborhood prayer, unity, and fellowship.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=liturgy" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-liturgy.jpg" class="ministry-icon" alt="Liturgy Committee">
+            <div class="card-text">
+              <h3>Liturgy Committee</h3>
+              <p>Team coordinating Mass preparation, altar services, and sacred liturgical celebrations.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=choir" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-choir.jpg" class="ministry-icon" alt="Choir">
+            <div class="card-text">
+              <h3>Choir (English & Tamil)</h3>
+              <p>Choir groups leading parish worship through English and Tamil hymns and sacred music.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=legion-of-mary" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-legion.jpg" class="ministry-icon" alt="Legion of Mary">
+            <div class="card-text">
+              <h3>Legion of Mary</h3>
+              <p>Prayer and service mission dedicated to Marian devotion and spiritual outreach.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=youth-group" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-youth.jpg" class="ministry-icon" alt="Youth Group STJAY">
+            <div class="card-text">
+              <h3>Youth Group (STJAY)</h3>
+              <p>Dynamic youth community engaging in faith formation, leadership, and parish service.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=altar-servers" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-catechism.jpg" class="ministry-icon" alt="Catechism">
+            <div class="card-text">
+              <h3>Catechism</h3>
+              <p>Christian faith education ministry nurturing children through Catholic teachings and values.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=catechism" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-altar.jpg" class="ministry-icon" alt="Altar Boys and Girls">
+            <div class="card-text">
+              <h3>Altar Boys & Girls</h3>
+              <p>Young altar servers assisting during Holy Mass and liturgical celebrations.</p>
+            </div>
+          </div>
+        </a>
+
+        <a href="ministry-details.html?id=svp" class="card">
+          <div class="card-img-text">
+            <img src="./image/ministry-svp.jpg" class="ministry-icon" alt="St Vincent De Paul">
+            <div class="card-text">
+              <h3>St. Vincent De Paul</h3>
+              <p>Charitable ministry serving the poor through compassion, support, and outreach.</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- ##################################### CHURCH STATS SECTION -->
+
+
+  <section id="church-stats">
+    <div class="stats-container">
+      <div class="stat-card">
+        <h3 class="counter" id="stat-total-families" data-count="0">0</h3>
+        <p>Total Families</p>
+      </div>
+      <div class="stat-card">
+        <h3 class="counter" id="stat-church-members" data-count="0">0</h3>
+        <p>Church Members</p>
+      </div>
+      <div class="stat-card">
+        <h3 class="counter" id="stat-ministries" data-count="0">0</h3>
+        <p>Ministries</p>
+      </div>
+      <div class="stat-card">
+        <h3 class="counter" id="stat-total-anbiam" data-count="0">0</h3>
+        <p>Total Anbiam</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ##################################### CONTACT SECTION -->
+
+  <section id="contact" class="contact-section">
+    <div class="contact-container">
+      <div class="contact-image">
+        <img src="./image/empty-christian-church-building.jpg" alt="Church Front">
+        <img src="./image/church-interior-solution-1000x1000.jpg" class="sub-img" alt="Church Inside">
+      </div>
+      <div class="contact-info">
+        <p class="contact-subtitle">Get In Touch</p>
+        <h2 class="contact-title">Feel Free To Contact Us</h2>
+        <p class="contact-description">
+          We are here to assist you with any questions or concerns. Reach out to us for spiritual guidance,
+          parish services, or general inquiries—we’re always happy to help!
+        </p>
+
+        <div class="contact-detail">
+          <div class="icon-circle">📍</div>
+          <div>
+            <h4>Our Location</h4>
+            <p>Medavakkam, Chennai, Tamil Nadu 600100</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="icon-circle">🎧</div>
+          <div>
+            <h4>Phone Number</h4>
+            <p>044 - 2277 2588<br>(+91) 91765 12842</p>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <div class="icon-circle">✉️</div>
+          <div>
+            <h4>Email Address</h4>
+            <p>info@sahayamadhachurch.in</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ##################################### MAP SECTION -->
+
+
+  <section id="map">
+    <div class="content-center">
+      <h2 style="text-align:center;">Find Us on the Map</h2>
+      <iframe
+        src="https://www.google.com/maps?q=301,+East+Coast+Rd,+Teachers+Colony,+Vettuvankeni,+Chennai,+Tamil+Nadu+600115&output=embed"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Church Location Map"></iframe>
+    </div>
+  </section>
+
+  <!-- ##################################### FOOTER SECTION -->
+
+  <footer class="modern-footer">
+    <div class="footer-container">
+
+      <!-- Column 1 -->
+      <div class="footer-col about-col">
+        <h3>Sts. Joachim and Anne Church</h3>
+        <p>
+          A faith-driven Catholic community in Vettuvankeni, Chennai,
+          committed to prayer, fellowship, and service.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="footer-col contact-col">
+        <h4>Contact Information</h4>
+
+        <ul>
+          <li><i class="fa-solid fa-location-dot"></i> ECR, Vettuvankeni, Chennai-115</li>
+          <li><i class="fa-solid fa-phone"></i> (+91) 91765 12842</li>
+
+          <li class="footer-email">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <a href="mailto:joachimandanneecr.in.com">joachimandanneecr.in.com</a>
+              <a href="mailto:joachimandanne2025.in">joachimandanne2025.in</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="footer-col links-col">
+        <h4>Quick Links</h4>
+        <a href="Home_page.html#about">About Us</a>
+        <a href="Home_page.html#events">Events</a>
+        <a href="Home_page.html#ministries">Ministries</a>
+        <a href="Home_page.html#contact">Contact Us</a>
+      </div>
+
+      <!-- Column 4 -->
+      <div class="footer-col social-col">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Sts. Joachim and Anne Church. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- ###################################################################################### -->
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    } 
+  </script>
+  <script>
+    const messages = [
+      "Welcome to Sts. Joachim and Anne Church",
+      "Finding Good and Eternity"
+    ];
+
+    let index = 0;
+    const heroHeading = document.getElementById("hero-heading");
+
+    setInterval(() => {
+      heroHeading.style.opacity = 0;
+
+      setTimeout(() => {
+        index = (index + 1) % messages.length;
+        heroHeading.textContent = messages[index];
+        heroHeading.style.opacity = 1;
+      }, 1000); // matches transition duration
+    }, 5000);
+  </script>
+
+  <script>
+    window.addEventListener('load', () => {
+      const cards = document.querySelectorAll('.event-card');
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // Stop observing once visible
+          }
+        });
+      }, {
+        root: null,
+        threshold: 0.2
+      });
+
+      cards.forEach(card => {
+        observer.observe(card);
+      });
+    });
+  </script>
+
+  <script>
+    // Load church stats from API
+    function loadChurchStats() {
+      fetch('admin/api/churchstatsapi.php')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(stats => {
+          // Update data-count attributes with API values
+          if (stats.total_families) {
+            const el = document.getElementById('stat-total-families');
+            if (el) el.setAttribute('data-count', stats.total_families.value || 0);
+          }
+          if (stats.church_members) {
+            const el = document.getElementById('stat-church-members');
+            if (el) el.setAttribute('data-count', stats.church_members.value || 0);
+          }
+          if (stats.ministries) {
+            const el = document.getElementById('stat-ministries');
+            if (el) el.setAttribute('data-count', stats.ministries.value || 0);
+          }
+          if (stats.total_anbiam) {
+            const el = document.getElementById('stat-total-anbiam');
+            if (el) el.setAttribute('data-count', stats.total_anbiam.value || 0);
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching church stats:', error);
+        });
+    }
+
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-count');
+          const count = +counter.innerText;
+          const increment = Math.ceil(target / 100);
+
+          if (count < target) {
+            counter.innerText = count + increment;
+            setTimeout(updateCount, 25);
+          } else {
+            counter.innerText = target;
+          }
+        };
+        updateCount();
+      });
+    }
+
+    let hasAnimated = false;
+    let statsLoaded = false;
+
+    // Load stats when page loads
+    window.addEventListener('DOMContentLoaded', () => {
+      loadChurchStats();
+      statsLoaded = true;
+    });
+
+    window.addEventListener('scroll', () => {
+      const stats = document.getElementById('church-stats');
+      const top = stats.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100 && !hasAnimated && statsLoaded) {
+        animateCounters();
+        hasAnimated = true;
+      }
+    });
+  </script>
+
+  <script>
+    const dayList = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    const tabs = document.querySelectorAll(".day-tab");
+    const tbody = document.getElementById("mass-content");
+    const thead = document.getElementById("mass-table-head");
+    let apiData = null;
+
+    // Capitalize first letter of day name
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Format time from database (HH:MM:SS) to readable format (HH:MM AM/PM)
+    function formatTime(timeStr) {
+      if (!timeStr) return '';
+      // If already formatted, return as is
+      if (timeStr.includes('AM') || timeStr.includes('PM')) return timeStr;
+
+      // Parse HH:MM:SS or HH:MM
+      const parts = timeStr.split(':');
+      let hours = parseInt(parts[0]);
+      const minutes = parts[1] || '00';
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      // Convert to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 0 should be 12
+
+      return `${hours}:${minutes} ${ampm}`;
+    }
+
+    // Format special time with date
+    function formatSpecialTime(item) {
+      if (!item.date || !item.time) return formatTime(item.time);
+      const d = new Date(item.date + 'T' + item.time);
+      if (isNaN(d.getTime())) {
+        // If date parsing fails, return formatted date + time
+        return formatTime(item.time);
+      }
+      const options = { month: 'long', day: 'numeric' };
+      const dateStr = d.toLocaleDateString(undefined, options);
+      return dateStr + ', ' + formatTime(item.time);
+    }
+
+    function renderTimings(day) {
+      tbody.innerHTML = "";
+      if (!apiData) {
+        tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; color: #666;">Loading mass timings...</td></tr>';
+        return;
+      }
+
+      if (day === "special") {
+        // Special timings: Time | Day/Occasion | Description
+        thead.innerHTML = "<tr><th>Time</th><th>Day/Occasion</th><th>Description</th></tr>";
+        const specialTimings = apiData.special || [];
+        if (specialTimings.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #666;">No special mass timings scheduled.</td></tr>';
+          return;
+        }
+        specialTimings.forEach(item => {
+          const row = `<tr>
+          <td>${formatSpecialTime(item)}</td>
+          <td>${item.day || ''}</td>
+          <td>${item.description || ''}</td>
+        </tr>`;
+          tbody.insertAdjacentHTML("beforeend", row);
+        });
+      } else {
+        // Regular timings: Time | Description
+        thead.innerHTML = "<tr><th>Time</th><th>Description</th></tr>";
+        const dayCapitalized = capitalize(day);
+        const dayTimings = (apiData.regular && apiData.regular[dayCapitalized]) || [];
+        if (dayTimings.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; color: #666;">No mass timings scheduled for this day.</td></tr>';
+          return;
+        }
+        dayTimings.forEach(item => {
+          const row = `<tr>
+          <td>${formatTime(item.time)}</td>
+          <td>${item.description || ''}</td>
+        </tr>`;
+          tbody.insertAdjacentHTML("beforeend", row);
+        });
+      }
+    }
+
+    function updateSpecialTabVisibility() {
+      const specialTab = document.querySelector('.day-tab[data-day="special"]');
+      if (apiData && apiData.special && apiData.special.length > 0) {
+        if (specialTab) specialTab.style.display = '';
+      } else {
+        if (specialTab) specialTab.style.display = 'none';
+        // If currently on special tab, switch to Sunday
+        const activeTab = document.querySelector('.day-tab.active');
+        if (activeTab && activeTab.getAttribute('data-day') === 'special') {
+          const sundayTab = document.querySelector('.day-tab[data-day="sunday"]');
+          if (sundayTab) {
+            sundayTab.click();
+          }
+        }
+      }
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        renderTimings(tab.getAttribute("data-day"));
+      });
+    });
+
+    // Fetch data from API and initialize
+    fetch('admin/api/masstimingsapi.php')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        apiData = data;
+        updateSpecialTabVisibility();
+        renderTimings('sunday');
+      })
+      .catch(error => {
+        console.error('Error fetching mass timings:', error);
+        tbody.innerHTML = '<tr><td colspan="2" style="text-align: center; color: #d32f2f;">Failed to load mass timings. Please try again later.</td></tr>';
+      });
+  </script>
+
+  <script>
+    // Gallery API binding
+    function loadGallery() {
+      const galleryGrid = document.getElementById('gallery-grid');
+      if (!galleryGrid) return;
+
+      fetch('admin/api/galleryapi.php')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(images => {
+          galleryGrid.innerHTML = '';
+
+          if (!images || images.length === 0) {
+            galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #666; padding: 2rem;">No gallery images available.</div>';
+            return;
+          }
+          const imagesToShow = images.slice(0, 8);
+          imagesToShow.forEach(image => {
+            const img = document.createElement('img');
+            img.src = `./image/${image.image}`;
+            img.alt = image.title || 'Church Gallery Image';
+            img.loading = 'lazy'; // Lazy load for better performance
+            img.onerror = function () {
+              // Hide broken images
+              this.style.display = 'none';
+            };
+            galleryGrid.appendChild(img);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching gallery:', error);
+          galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #d32f2f; padding: 2rem;">Failed to load gallery images. Please try again later.</div>';
+        });
+    }
+
+    // Load gallery when page loads
+    window.addEventListener('DOMContentLoaded', loadGallery);
+  </script>
+
+  <script>
+    // Events API binding
+    function formatEventDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      if (isNaN(date.getTime())) return dateStr;
+
+      const options = { month: 'long', day: 'numeric' };
+      return date.toLocaleDateString(undefined, options);
+    }
+
+    function formatEventTime(timeStr) {
+      if (!timeStr) return '';
+      // If already formatted, return as is
+      if (timeStr.includes('AM') || timeStr.includes('PM')) return timeStr;
+
+      // Parse HH:MM:SS or HH:MM
+      const parts = timeStr.split(':');
+      let hours = parseInt(parts[0]);
+      const minutes = parts[1] || '00';
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      // Convert to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 0 should be 12
+
+      return `${hours}:${minutes} ${ampm}`;
+    }
+
+    function formatEventLocation(event) {
+      let locationParts = [];
+      if (event.location) locationParts.push(event.location);
+      if (event.start_time) locationParts.push(formatEventTime(event.start_time));
+      return locationParts.join(' · ');
+    }
+
+    function loadEvents() {
+      const eventCards = document.getElementById('event-cards');
+      if (!eventCards) return;
+
+      fetch('admin/api/eventapi.php')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(events => {
+          eventCards.innerHTML = '';
+
+          if (!events || events.length === 0) {
+            eventCards.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #666; padding: 2rem;">No events scheduled.</div>';
+            return;
+          }
+
+          // Filter to show only events with dates
+          const eventsWithDates = events.filter(event => event.date);
+
+          if (eventsWithDates.length === 0) {
+            eventCards.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #666; padding: 2rem;">No events scheduled.</div>';
+            return;
+          }
+
+          // Display first 4 events from API (no date filtering)
+          const eventsToShow = eventsWithDates.slice(0, 4);
+
+          eventsToShow.forEach(event => {
+            const eventCard = document.createElement('div');
+            eventCard.className = 'event-card';
+
+            // Build image HTML
+            const imageSrc = event.image ? `./image/${event.image}` : './image/default-event.jpg';
+            const imageAlt = event.title || 'Event Image';
+
+            // Build date HTML
+            const dateFormatted = formatEventDate(event.date);
+
+            // Build location/time HTML
+            const locationInfo = formatEventLocation(event);
+
+            // Build event details link
+            const eventLink = `event-details.html?id=${event.id}`;
+
+            eventCard.innerHTML = `
+            <img src="${imageSrc}" alt="${imageAlt}" class="event-img" onerror="this.src='./image/default-event.jpg'; this.onerror=null;" />
+            <h3>📅 ${dateFormatted}</h3>
+            <p><strong>${event.title || 'Event'}</strong>${locationInfo ? '<br>' + locationInfo : ''}</p>
+            <a href="${eventLink}" class="event-btn">Event-Details</a>
+          `;
+
+            eventCards.appendChild(eventCard);
+          });
+
+          // Trigger intersection observer for animations
+          setTimeout(() => {
+            const cards = document.querySelectorAll('.event-card');
+            if (cards.length > 0 && window.IntersectionObserver) {
+              const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                  if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.2 });
+              cards.forEach(card => observer.observe(card));
+            }
+          }, 100);
+        })
+        .catch(error => {
+          console.error('Error fetching events:', error);
+          eventCards.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #d32f2f; padding: 2rem;">Failed to load events. Please try again later.</div>';
+        });
+    }
+
+    // Load events when page loads
+    window.addEventListener('DOMContentLoaded', loadEvents);
+  </script>
+
+  <script>
+    // Parish Priest API binding
+    function loadParishPriest() {
+      const priestContainer = document.getElementById('priest-container');
+      if (!priestContainer) return;
+
+      fetch('admin/api/priestapi.php')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(priest => {
+          if (!priest || !priest.id) {
+            priestContainer.innerHTML = '<div style="text-align: center; color: #666; padding: 3rem;">No parish priest information available.</div>';
+            return;
+          }
+
+          // Build the priest HTML
+          const imageSrc = priest.image ? `./image/${priest.image}` : './image/default-event.jpg';
+          const servingSince = priest.serving_since || '';
+
+          priestContainer.innerHTML = `
+          <div class="priest-image">
+            <img src="${imageSrc}" alt="${priest.name || 'Parish Priest'}" onerror="this.src='./image/default-event.jpg'; this.onerror=null;">
+            ${servingSince ? `<span class="service-year">Serving Since ${servingSince}</span>` : ''}
+          </div>
+
+          <div class="priest-details">
+            <h2>Current Parish Priest</h2>
+            <h3>${priest.name || 'Parish Priest'}</h3>
+
+            <p>${priest.description || 'No description available.'}</p>
+
+            <div class="priest-meta">
+              ${priest.serving_since ? `<div><strong>📅 Tenure:</strong> ${priest.serving_since} – Present</div>` : ''}
+              ${priest.diocese ? `<div><strong>🌍 Diocese:</strong> ${priest.diocese}</div>` : ''}
+            </div>
+          </div>
+        `;
+        })
+        .catch(error => {
+          console.error('Error fetching parish priest:', error);
+          priestContainer.innerHTML = '<div style="text-align: center; color: #d32f2f; padding: 3rem;">Failed to load parish priest information. Please try again later.</div>';
+        });
+    }
+
+    // Load parish priest when page loads
+    window.addEventListener('DOMContentLoaded', loadParishPriest);
+  </script>
+
+</body>
+
+</html>

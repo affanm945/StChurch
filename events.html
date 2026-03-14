@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Events - Sts. Joachim and Anne Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ffe0f0, #e0f7ff);
+      margin: 0;
+      padding: 0;
+    }
+
+    .content-center {
+      max-width: 1200px;
+      margin: auto;
+      padding: 4rem 5vw;
+    }
+
+    h2 {
+      text-align: center;
+      color: #0b3d91;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb-nav {
+      background: linear-gradient(to right, #f0f4ff, #fef6fb);
+      padding: 1rem 2rem;
+      margin: 0 5vw;
+      margin-top: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      animation: slideFade 0.4s ease-in-out;
+    }
+
+    .breadcrumb-nav a {
+      color: #0b3d91;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .breadcrumb-nav a:hover {
+      text-decoration: underline;
+      color: #2e1f91;
+    }
+
+    .breadcrumb-nav span {
+      color: #888;
+    }
+
+    .breadcrumb-nav .current {
+      font-weight: 600;
+      color: #444;
+    }
+
+    @keyframes slideFade {
+      from {
+        transform: translateY(-6px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.8);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .logo1 {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    .event-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .event-btn {
+      background: #0b3d91;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+      transition: 0.3s;
+    }
+
+    .event-btn:hover {
+      background: #092c6d;
+    }
+
+    .site-footer {
+      background: #0b3d91;
+      color: white;
+      padding: 3rem 5vw 1.5rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-container h3,
+    .footer-container h4 {
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+
+    .footer-about p,
+    .footer-contact ul,
+    .footer-links ul {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #eee;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-contact ul li,
+    .footer-links ul li {
+      list-style: none;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-contact a,
+    .footer-links a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-social .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .footer-social img {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.3s;
+    }
+
+    .footer-social img:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo1">
+      <img src="./image/holy.jfif" alt="Church Logo" class="logo-img" />
+      <div class="logo">
+        Sts. Joachim and Anne Church
+        <small>ECR, Vettuvankeni, Chennai-115</small>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <nav>
+        <ul>
+          <li><a href="Home_page.html#about">About Us</a></li>
+          <li><a href="Home_page.html#gallery">Gallery</a></li>
+          <li><a href="Home_page.html#events">Events</a></li>
+          <li><a href="Home_page.html#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumb-nav">
+    <a href="Home_page.html">Home</a>
+    <span>&rsaquo;</span>
+    <a href="Home_page.html#events">Upcoming Events</a>
+    <span>&rsaquo;</span>
+    <span class="current">Events</span>
+  </div>
+
+
+  <section class="content-center">
+    <h2>All Events</h2>
+    <div class="event-cards" id="event-cards">
+      <!-- Events will be loaded dynamically -->
+      <div style="width: 100%; text-align: center; color: #666; padding: 3rem;">
+        Loading events...
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Sts. Joachim and Anne Church</h3>
+        <p>A welcoming Catholic community in Vettuvankeni, Chennai, dedicated to prayer, service, and fellowship.</p>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact Information</h4>
+        <ul>
+          <li><strong>📍 Address:</strong> ECR, Vettuvankeni, Chennai-115</li>
+          <li><strong>📞 Phone:</strong> (+91) 91765 12842</li>
+          <li><strong>✉️ Email:</strong> <a href="mailto:info@sahayamadhachurch.in">info@sahayamadhachurch.in</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#ministries">Ministries</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><img src="./icons/facebook.svg" alt="Facebook" /></a>
+          <a href="#"><img src="./icons/instagram.svg" alt="Instagram" /></a>
+          <a href="#"><img src="./icons/youtube.svg" alt="YouTube" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Sts. Joachim and Anne Church. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Events API binding
+    function formatEventDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      if (isNaN(date.getTime())) return dateStr;
+      
+      const options = { month: 'long', day: 'numeric' };
+      return date.toLocaleDateString(undefined, options);
+    }
+
+    function formatEventTime(timeStr) {
+      if (!timeStr) return '';
+      // If already formatted, return as is
+      if (timeStr.includes('AM') || timeStr.includes('PM')) return timeStr;
+      
+      // Parse HH:MM:SS or HH:MM
+      const parts = timeStr.split(':');
+      let hours = parseInt(parts[0]);
+      const minutes = parts[1] || '00';
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      
+      // Convert to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 0 should be 12
+      
+      return `${hours}:${minutes} ${ampm}`;
+    }
+
+    function formatEventLocation(event) {
+      let locationParts = [];
+      if (event.location) locationParts.push(event.location);
+      if (event.start_time) locationParts.push(formatEventTime(event.start_time));
+      return locationParts.join(' · ');
+    }
+
+    function loadEvents() {
+      const eventCards = document.getElementById('event-cards');
+      if (!eventCards) return;
+
+      fetch('admin/api/eventapi.php')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(events => {
+          eventCards.innerHTML = '';
+          
+          if (!events || events.length === 0) {
+            eventCards.innerHTML = '<div style="width: 100%; text-align: center; color: #666; padding: 3rem;">No events scheduled.</div>';
+            return;
+          }
+
+          // Filter to show only events with dates
+          const eventsWithDates = events.filter(event => event.date);
+
+          if (eventsWithDates.length === 0) {
+            eventCards.innerHTML = '<div style="width: 100%; text-align: center; color: #666; padding: 3rem;">No events scheduled.</div>';
+            return;
+          }
+
+          // Sort by date (descending - most recent first)
+          eventsWithDates.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            return dateB - dateA; // Descending order
+          });
+
+          // Display all events
+          eventsWithDates.forEach(event => {
+            const eventCard = document.createElement('div');
+            eventCard.className = 'event-card';
+            
+            // Build image HTML
+            const imageSrc = event.image ? `./image/${event.image}` : './image/default-event.jpg';
+            const imageAlt = event.title || 'Event Image';
+            
+            // Build date HTML
+            const dateFormatted = formatEventDate(event.date);
+            
+            // Build location/time HTML
+            const locationInfo = formatEventLocation(event);
+            
+            // Build event details link
+            const eventLink = `event-details.html?id=${event.id}`;
+            
+            eventCard.innerHTML = `
+              <img src="${imageSrc}" alt="${imageAlt}" class="event-img" onerror="this.src='./image/default-event.jpg'; this.onerror=null;" />
+              <h3>📅 ${dateFormatted}</h3>
+              <p><strong>${event.title || 'Event'}</strong>${locationInfo ? '<br>' + locationInfo : ''}</p>
+              <a href="${eventLink}" class="event-btn">View Details</a>
+            `;
+            
+            eventCards.appendChild(eventCard);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching events:', error);
+          eventCards.innerHTML = '<div style="width: 100%; text-align: center; color: #d32f2f; padding: 3rem;">Failed to load events. Please try again later.</div>';
+        });
+    }
+
+    // Load events when page loads
+    window.addEventListener('DOMContentLoaded', loadEvents);
+  </script>
+
+</body>
+
+</html>

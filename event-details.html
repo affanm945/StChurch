@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details | Sts. Joachim and Anne Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --accent: #ffd700;
+      --text: #333;
+      --light-bg: #f5f9ff;
+      --card-bg: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      top: 0;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.8);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid #ccc;
+      padding: 1rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+
+    .logo1 {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    /* .toggle-btn {
+      margin-left: 1rem;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    } */
+
+    .breadcrumb-nav {
+      background: linear-gradient(to right, #f0f4ff, #fef6fb);
+      padding: 1rem 2rem;
+      margin: 0 5vw;
+      margin-top: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      animation: slideFade 0.4s ease-in-out;
+    }
+
+    .breadcrumb-nav a {
+      color: #0b3d91;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s ease;
+    }
+
+    .breadcrumb-nav a:hover {
+      text-decoration: underline;
+      color: #2e1f91;
+    }
+
+    .breadcrumb-nav span {
+      color: #888;
+    }
+
+    .breadcrumb-nav .current {
+      font-weight: 600;
+      color: #444;
+    }
+
+    @keyframes slideFade {
+      from {
+        transform: translateY(-6px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .centered-title {
+      text-align: center;
+      margin: 2rem 0;
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .event-details {
+      display: flex;
+      flex-wrap: wrap;
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .event-image {
+      flex: 1 1 50%;
+      min-height: 300px;
+      background: url('./image/youth.jfif') center/cover no-repeat;
+    }
+
+    .event-content {
+      flex: 1 1 50%;
+      padding: 2rem;
+    }
+
+    .event-content h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .event-content p {
+      margin-bottom: 1rem;
+    }
+
+    .event-meta {
+      margin-top: 2rem;
+    }
+
+    .event-meta div {
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery {
+      margin-top: 3rem;
+    }
+
+    .gallery h3 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .gallery-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-images img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-images img:hover {
+      transform: scale(1.05);
+    }
+
+    .site-footer {
+      background: #0b3d91;
+      color: white;
+      padding: 3rem 5vw 1.5rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-container h3,
+    .footer-container h4 {
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+
+    .footer-about p,
+    .footer-contact ul,
+    .footer-links ul {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #eee;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-contact ul li,
+    .footer-links ul li {
+      list-style: none;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-contact a,
+    .footer-links a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-social .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .footer-social img {
+      width: 28px;
+      height: 28px;
+      transition: transform 0.3s;
+    }
+
+    .footer-social img:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo1">
+      <img src="./image/holy.jfif" alt="Church Logo" class="logo-img" />
+      <div class="logo">
+        Sts. Joachim and Anne Church
+        <small>ECR, Vettuvankeni, Chennai-115</small>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center;">
+      <nav>
+        <ul>
+          <li><a href="Home_page.html#about">About Us</a></li>
+          <li><a href="Home_page.html#gallery">Gallery</a></li>
+          <li><a href="Home_page.html#events">Events</a></li>
+          <li><a href="Home_page.html#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <!-- <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button> -->
+    </div>
+  </header>
+  <div class="breadcrumb-nav">
+    <a href="Home_page.html">Home</a>
+    <span>&rsaquo;</span>
+    <a href="events.html">Events</a>
+    <span>&rsaquo;</span>
+    <span class="current">Event Details</span>
+  </div>
+
+
+  <h1 class="centered-title" id="event-title">Event Details</h1>
+
+  <div class="container">
+    <div class="event-details" id="event-details-container">
+      <div class="event-image" id="event-main-image"></div>
+      <div class="event-content">
+        <h2 id="event-content-title">Loading event details...</h2>
+        <p id="event-description"></p>
+        <div class="event-meta" id="event-meta">
+          <!-- Event meta information will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery" id="event-gallery-section">
+      <h3>Event Gallery</h3>
+      <div class="gallery-images" id="event-gallery-images">
+        <!-- Gallery images will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Sts. Joachim and Anne Church</h3>
+        <p>A welcoming Catholic community in Vettuvankeni, Chennai, dedicated to prayer, service, and fellowship.</p>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact Information</h4>
+        <ul>
+          <li><strong>📍 Address:</strong> ECR, Vettuvankeni, Chennai-115</li>
+          <li><strong>📞 Phone:</strong> (+91) 91765 12842</li>
+          <li><strong>✉️ Email:</strong> <a href="mailto:info@sahayamadhachurch.in">info@sahayamadhachurch.in</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#ministries">Ministries</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#"><img src="./icons/facebook.svg" alt="Facebook" /></a>
+          <a href="#"><img src="./icons/instagram.svg" alt="Instagram" /></a>
+          <a href="#"><img src="./icons/youtube.svg" alt="YouTube" /></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Sts. Joachim and Anne Church. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Event Details API binding
+    function formatEventDate(dateStr) {
+      if (!dateStr) return '';
+      const date = new Date(dateStr);
+      if (isNaN(date.getTime())) return dateStr;
+
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString(undefined, options);
+    }
+
+    function formatEventTime(timeStr) {
+      if (!timeStr) return '';
+      // If already formatted, return as is
+      if (timeStr.includes('AM') || timeStr.includes('PM')) return timeStr;
+
+      // Parse HH:MM:SS or HH:MM
+      const parts = timeStr.split(':');
+      let hours = parseInt(parts[0]);
+      const minutes = parts[1] || '00';
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      // Convert to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 0 should be 12
+
+      return `${hours}:${minutes} ${ampm}`;
+    }
+
+    function getEventIdFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id');
+    }
+
+    function loadEventDetails() {
+      const eventId = getEventIdFromURL();
+
+      if (!eventId) {
+        document.getElementById('event-content-title').textContent = 'Event not found';
+        document.getElementById('event-description').textContent = 'No event ID specified in the URL.';
+        return;
+      }
+
+      // Update page title
+      document.title = `Event Details | Sts. Joachim and Anne Church`;
+
+      fetch(`admin/api/eventapi.php?id=${eventId}`)
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .then(event => {
+          if (!event || !event.id) {
+            document.getElementById('event-content-title').textContent = 'Event not found';
+            document.getElementById('event-description').textContent = 'The requested event could not be found.';
+            return;
+          }
+
+          // Update page title
+          document.title = `${event.title || 'Event Details'} | Sts. Joachim and Anne Church`;
+
+          // Update main title
+          document.getElementById('event-title').textContent = event.title || 'Event Details';
+
+          // Update event content title
+          document.getElementById('event-content-title').textContent = event.title || 'Event';
+
+          // Update description
+          const descriptionEl = document.getElementById('event-description');
+          if (event.description) {
+            descriptionEl.textContent = event.description;
+          } else {
+            descriptionEl.textContent = 'No description available for this event.';
+          }
+
+          // Update main image
+          const mainImageEl = document.getElementById('event-main-image');
+          if (event.image) {
+            mainImageEl.style.backgroundImage = `url('./image/${event.image}')`;
+            mainImageEl.style.backgroundSize = 'cover';
+            mainImageEl.style.backgroundPosition = 'center';
+            mainImageEl.style.backgroundRepeat = 'no-repeat';
+          } else {
+            mainImageEl.style.backgroundImage = `url('./image/default-event.jpg')`;
+            mainImageEl.style.backgroundSize = 'cover';
+            mainImageEl.style.backgroundPosition = 'center';
+            mainImageEl.style.backgroundRepeat = 'no-repeat';
+          }
+
+          // Update event meta information
+          const metaEl = document.getElementById('event-meta');
+          let metaHTML = '';
+
+          if (event.date) {
+            metaHTML += `<div><strong>Date:</strong> ${formatEventDate(event.date)}</div>`;
+          }
+
+          if (event.start_time) {
+            metaHTML += `<div><strong>Start Time:</strong> ${formatEventTime(event.start_time)}</div>`;
+          }
+
+          if (event.end_time) {
+            metaHTML += `<div><strong>End Time:</strong> ${formatEventTime(event.end_time)}</div>`;
+          }
+
+          if (event.location) {
+            metaHTML += `<div><strong>Location:</strong> ${event.location}</div>`;
+          }
+
+          if (event.instructor) {
+            metaHTML += `<div><strong>Instructor:</strong> ${event.instructor}</div>`;
+          }
+
+          metaEl.innerHTML = metaHTML || '<div>No additional information available.</div>';
+
+          // Update event gallery
+          const galleryImagesEl = document.getElementById('event-gallery-images');
+          const gallerySectionEl = document.getElementById('event-gallery-section');
+
+          if (event.gallery && event.gallery.length > 0) {
+            galleryImagesEl.innerHTML = '';
+            event.gallery.forEach((imageName, index) => {
+              const img = document.createElement('img');
+              img.src = `./image/${imageName}`;
+              img.alt = `Event Gallery Image ${index + 1}`;
+              img.loading = 'lazy';
+              img.onerror = function () {
+                this.style.display = 'none';
+              };
+              galleryImagesEl.appendChild(img);
+            });
+            gallerySectionEl.style.display = 'block';
+          } else {
+            gallerySectionEl.style.display = 'none';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching event details:', error);
+          document.getElementById('event-content-title').textContent = 'Error Loading Event';
+          document.getElementById('event-description').textContent = 'Failed to load event details. Please try again later.';
+          document.getElementById('event-meta').innerHTML = '';
+          document.getElementById('event-gallery-section').style.display = 'none';
+        });
+    }
+
+    // Load event details when page loads
+    window.addEventListener('DOMContentLoaded', loadEventDetails);
+  </script>
+
+</body>
+
+</html>

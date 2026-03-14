@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ministry Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary:#0b3d91;
+}
+
+body {
+  font-family:Poppins, sans-serif;
+  margin:0;
+  background:linear-gradient(to right,#fdfbfb,#ebedee);
+  color:#222;
+}
+
+/* Header */
+header {
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  padding:1rem 5vw;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo1 { display:flex; gap:1rem; align-items:center; }
+.logo-img { width:48px;height:48px;border-radius:6px;object-fit:cover; }
+
+/* Breadcrumb */
+.breadcrumb-nav{
+  background:linear-gradient(to right,#eef3ff,#fff3fb);
+  margin:1rem 5vw;
+  padding:1rem 1.3rem;
+  border-radius:12px;
+  font-size:.9rem;
+  display:flex;
+  gap:.4rem;
+}
+.breadcrumb-nav a{color:var(--primary);text-decoration:none;font-weight:600;}
+.breadcrumb-nav span{color:#666;}
+.current{color:#333;font-weight:700;}
+
+/* Page Title */
+.page-title{
+  text-align:center;
+  color:var(--primary);
+  margin:1.5rem 0 .5rem;
+}
+
+/* Scroll container */
+.content-wrapper{
+  max-width:1100px;
+  margin:auto;
+  padding:1rem 5vw 3rem;
+}
+
+/* Horizontal Detail Card */
+.detail-card{
+  display:flex;
+  gap:1.2rem;
+  background:#fff;
+  border-radius:14px;
+  padding:1.2rem;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  margin-bottom:1.1rem;
+  align-items:center;
+}
+
+.detail-img{
+  width:95px;
+  height:95px;
+  border-radius:12px;
+  object-fit:cover;
+  border:2px solid var(--primary);
+  flex-shrink:0;
+}
+
+.detail-card h3{margin:0 0 .4rem;color:var(--primary);}
+.detail-card p{margin:0;color:#444;line-height:1.6;font-size:.95rem;}
+
+footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:1.2rem 0;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo1">
+    <img src="./image/holy.jfif" class="logo-img" alt="Church Logo">
+    <div>
+      <strong>Sts. Joachim and Anne Church</strong>
+      <small style="display:block;color:#666">ECR, Vettuvankeni, Chennai-115</small>
+    </div>
+  </div>
+
+  <a href="Home_page.html#ministries" style="text-decoration:none;color:#0b3d91;font-weight:600;">
+    ← Back to Ministries
+  </a>
+</header>
+
+<div class="breadcrumb-nav">
+  <a href="Home_page.html">Home</a> <span>›</span>
+  <a href="Home_page.html#ministries">Ministries</a> <span>›</span>
+  <span class="current" id="breadcrumbName"></span>
+</div>
+
+<h2 class="page-title" id="pageTitle"></h2>
+
+<div class="content-wrapper" id="detailsContainer"></div>
+
+<footer>
+  © 2025 Sts. Joachim and Anne Church — All Rights Reserved
+</footer>
+
+<script>
+const ministries = {
+  "parish-council": {
+    name: "Parish Council",
+    cards: [
+      {
+        img:"./image/parish.jpg",
+        title:"About Parish Council",
+        text:"The Parish Council leads parish administration, spiritual planning, community coordination, and supports key pastoral initiatives."
+      },
+      {
+        img:"./image/leadership.jpg",
+        title:"Responsibilities",
+        text:"Advising the parish priest, organizing programs, guiding parish activities, strengthening family faith life and outreach."
+      },
+      {
+        img:"./image/holy.jfif",
+        title:"Meetings & Engagement",
+        text:"Council meetings are held regularly to review initiatives, address parish needs, and coordinate ministry responsibilities."
+      }
+      
+    ]
+  },
+
+  "anbiams": {
+    name: "Anbiams",
+    cards: [
+      {
+        img:"./image/community.jpg",
+        title:"About Anbiams",
+        text:"Small Christian community groups that gather for prayer, fellowship, faith sharing, and neighborhood support."
+      },
+      {
+        img:"./image/family.jpg",
+        title:"Faith & Family Growth",
+        text:"Anbiams foster unity among families, strengthen Christian living, and build spiritual bonding within the community."
+      }
+    ]
+  },
+
+  "liturgy": {
+    name: "Liturgy Committee",
+    cards: [
+      {
+        img:"./image/liturgy.jpg",
+        title:"Committee Role",
+        text:"Coordinates Mass preparation, altar services, liturgical planning, and sacred celebrations."
+      }
+    ]
+  },
+
+  "choir": {
+  name: "Choir (English & Tamil)",
+  cards: [
+    {
+      img:"./image/choir1.jpg",
+      title:"About the Choir Ministry",
+      text:"The parish choir leads the congregation in worship through sacred music, English and Tamil hymns, and liturgical songs that enrich the Holy Mass."
+    },
+    {
+      img:"./image/choir2.jpg",
+      title:"Role in Liturgical Worship",
+      text:"The choir supports singing during Eucharistic celebrations, feast day services, special ceremonies, and devotions throughout the liturgical year."
+    },
+    {
+      img:"./image/choir3.jpg",
+      title:"Practice & Formation",
+      text:"Choir members participate in regular practice sessions, musical training, harmony preparation, and spiritual development through music ministry."
+    }
+  ]
+},
+
+"legion-of-mary": {
+  name: "Legion of Mary",
+  cards: [
+    {
+      img:"./image/legion1.jpg",
+      title:"About the Legion of Mary",
+      text:"A lay apostolic organization devoted to prayer, evangelization, and service, modeled on Marian spirituality and missionary outreach."
+    },
+    {
+      img:"./image/legion2.jpg",
+      title:"Spiritual & Community Mission",
+      text:"Members visit the sick, elderly, and homebound, support families in prayer, conduct rosary services, and assist in parish faith activities."
+    },
+    {
+      img:"./image/legion3.jpg",
+      title:"Discipline & Commitment",
+      text:"The ministry emphasizes humility, service, perseverance, and deep devotion to Jesus through Mary, in daily prayer and active ministry."
+    }
+  ]
+},
+
+"youth-group": {
+  name: "Youth Group (STJAY)",
+  cards: [
+    {
+      img:"./image/youth1.jpg",
+      title:"About the Youth Group",
+      text:"STJAY is a dynamic youth community engaging in faith formation, leadership development, social outreach, and parish service initiatives."
+    },
+    {
+      img:"./image/youth2.jpg",
+      title:"Faith & Leadership Growth",
+      text:"Youth members participate in retreats, volunteering, parish events, and leadership programs to deepen values and spiritual maturity."
+    },
+    {
+      img:"./image/youth3.jpg",
+      title:"Empowering Young Catholics",
+      text:"The group encourages teamwork, fellowship, career guidance activities, cultural programs, and missionary responsibility among youth."
+    }
+  ]
+},
+
+"altar-servers": {
+  name: "Altar Boys & Girls",
+  cards: [
+    {
+      img:"./image/altar1.jpg",
+      title:"About the Altar Servers",
+      text:"Altar boys and girls assist the priest during Holy Mass and liturgical ceremonies, carrying candles, incense, processional cross, and supporting sacred rituals with reverence and discipline."
+    },
+    {
+      img:"./image/altar2.jpg",
+      title:"Role in Liturgical Service",
+      text:"They participate in offertory, altar preparation, Gospel procession, and assist during special feast masses, weddings, funerals, and parish celebrations."
+    },
+    {
+      img:"./image/altar3.jpg",
+      title:"Faith & Character Formation",
+      text:"The ministry helps children grow in spiritual maturity, responsibility, leadership, and respect for the Holy Eucharist through regular guidance and training."
+    }
+  ]
+},
+
+"catechism": {
+  name: "Catechism",
+  cards: [
+    {
+      img:"./image/catechism1.jpg",
+      title:"About Catechism Ministry",
+      text:"The Catechism program nurtures the faith of children through structured biblical teaching, moral values, Church traditions, and sacramental preparation."
+    },
+    {
+      img:"./image/catechism2.jpg",
+      title:"Faith Education & Formation",
+      text:"Classes include scripture lessons, interactive activities, prayers, moral instruction, and guidance for First Holy Communion and Confirmation students."
+    },
+    {
+      img:"./image/catechism3.jpg",
+      title:"Building Catholic Foundation",
+      text:"Catechists mentor children to grow in prayer life, community responsibility, compassion, and strong Catholic identity rooted in love for Christ."
+    }
+    ]
+  },
+
+"svp": {
+  name: "St. Vincent de Paul",
+  cards: [
+    {
+      img:"./image/svp1.jpg",
+      title:"About St. Vincent de Paul Society",
+      text:"A charitable organization serving the poor, elderly, students in need, and marginalized families through acts of compassion and social outreach."
+    },
+    {
+      img:"./image/svp2.jpg",
+      title:"Service & Welfare Initiatives",
+      text:"Activities include food support programs, medical help, education assistance, emergency relief, and community development projects."
+    },
+    {
+      img:"./image/svp3.jpg",
+      title:"Mission of Compassion & Justice",
+      text:"Members work in humility and service, inspired by Christian values of love, dignity, dignity of life, and solidarity with the needy."
+    }
+  ]
+}
+
+};
+
+/* ------- Load by URL Param ------- */
+const id = new URLSearchParams(window.location.search).get("id");
+const data = ministries[id];
+
+if(!data){
+  document.getElementById("pageTitle").innerText = "Ministry Not Found";
+} else {
+  document.getElementById("pageTitle").innerText = data.name;
+  document.getElementById("breadcrumbName").innerText = data.name;
+
+  const container = document.getElementById("detailsContainer");
+  data.cards.forEach(item=>{
+    container.innerHTML += `
+      <div class="detail-card">
+        <img src="${item.img}" class="detail-img">
+        <div>
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </div>
+      </div>`;
+  });
+}
+</script>
+
+</body>
+</html>
